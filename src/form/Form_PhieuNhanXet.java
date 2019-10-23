@@ -5,6 +5,8 @@
  */
 package form;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author phamq
@@ -35,6 +37,7 @@ public class Form_PhieuNhanXet extends javax.swing.JPanel {
         jButton_sua_pnx = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_dspnx = new javax.swing.JTable();
+        jButton_them_pnx = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Danh Sách Phiếu Nhận Xét");
@@ -47,6 +50,11 @@ public class Form_PhieuNhanXet extends javax.swing.JPanel {
 
         jButton_sua_pnx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_edit_calendar_24px.png"))); // NOI18N
         jButton_sua_pnx.setText("Sửa Phiếu Nhận Xét");
+        jButton_sua_pnx.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_sua_pnxMouseClicked(evt);
+            }
+        });
 
         jTable_dspnx.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,6 +94,14 @@ public class Form_PhieuNhanXet extends javax.swing.JPanel {
         jTable_dspnx.setShowGrid(true);
         jScrollPane1.setViewportView(jTable_dspnx);
 
+        jButton_them_pnx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_add_24px.png"))); // NOI18N
+        jButton_them_pnx.setText("Thêm Phiếu Nhận Xét");
+        jButton_them_pnx.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_them_pnxMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,6 +118,8 @@ public class Form_PhieuNhanXet extends javax.swing.JPanel {
                         .addComponent(jButton_tim_pnx))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_them_pnx)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_sua_pnx)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_xoa_pnx)))
@@ -119,7 +137,8 @@ public class Form_PhieuNhanXet extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_xoa_pnx)
-                    .addComponent(jButton_sua_pnx))
+                    .addComponent(jButton_sua_pnx)
+                    .addComponent(jButton_them_pnx))
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -141,9 +160,28 @@ public class Form_PhieuNhanXet extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_them_pnxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_them_pnxMouseClicked
+        Form_Tao_PNX formtaopnx = new Form_Tao_PNX();
+        formtaopnx.setVisible(true);
+        formtaopnx.pack();
+        formtaopnx.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        formtaopnx.setResizable(false);
+        formtaopnx.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton_them_pnxMouseClicked
+
+    private void jButton_sua_pnxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_sua_pnxMouseClicked
+        Form_Sua_PNX formsuapnx = new Form_Sua_PNX();
+        formsuapnx.setVisible(true);
+        formsuapnx.pack();
+        formsuapnx.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        formsuapnx.setResizable(false);
+        formsuapnx.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton_sua_pnxMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_sua_pnx;
+    private javax.swing.JButton jButton_them_pnx;
     private javax.swing.JButton jButton_tim_pnx;
     private javax.swing.JButton jButton_xoa_pnx;
     private javax.swing.JLabel jLabel1;

@@ -50,6 +50,8 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jButton_them_pnx" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton_sua_pnx" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton_xoa_pnx" min="-2" max="-2" attributes="0"/>
@@ -74,6 +76,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton_xoa_pnx" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton_sua_pnx" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_them_pnx" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
@@ -116,6 +119,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="S&#x1eed;a Phi&#x1ebf;u Nh&#x1ead;n X&#xe9;t"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton_sua_pnxMouseClicked"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -139,6 +145,17 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="jButton_them_pnx">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/icons8_add_24px.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Th&#xea;m Phi&#x1ebf;u Nh&#x1ead;n X&#xe9;t"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton_them_pnxMouseClicked"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

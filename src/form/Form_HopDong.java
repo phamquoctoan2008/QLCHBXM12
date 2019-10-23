@@ -5,6 +5,8 @@
  */
 package form;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author phamq
@@ -47,6 +49,11 @@ public class Form_HopDong extends javax.swing.JPanel {
 
         jButton_sua_hopdong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_edit_calendar_24px.png"))); // NOI18N
         jButton_sua_hopdong.setText("Sửa Hợp Đồng");
+        jButton_sua_hopdong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_sua_hopdongMouseClicked(evt);
+            }
+        });
 
         jTable_dshopdong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,6 +147,16 @@ public class Form_HopDong extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_sua_hopdongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_sua_hopdongMouseClicked
+        // TODO add your handling code here:
+        Form_Sua_HopDong formsuahd = new Form_Sua_HopDong();
+        formsuahd.setVisible(true);
+        formsuahd.pack();
+        formsuahd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        formsuahd.setResizable(false);
+        formsuahd.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton_sua_hopdongMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

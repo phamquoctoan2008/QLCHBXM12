@@ -5,14 +5,29 @@
  */
 package gui;
 
+import form.Form_ChonLoaiNV_SuaNV;
+import form.Form_ChonLoaiNV_ThemNV;
 import form.Form_HopDong;
 import form.Form_KhachHang;
 import form.Form_NhanVien;
 import form.Form_PhieuNhanXet;
+import form.Form_Sua_HopDong;
+import form.Form_Sua_KhachHang;
+import form.Form_Sua_PNX;
+import form.Form_Tao_HopDong;
+import form.Form_Tao_PNX;
+
+import form.Form_Them_NhanVien_HanhChanh;
+import form.Form_Them_Xe;
+import form.Form_ThongKe_TonKho;
+import form.Form_ThongKe_XeBan;
+import form.Form_Xe;
 import gui.menuItem.MenuItem;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -56,6 +71,8 @@ public class Home extends javax.swing.JFrame {
         ImageIcon iconTimKiem = new ImageIcon(getClass().getResource("/images/icon_timkiem_36px.png"));
         ImageIcon iconKhachHang = new ImageIcon(getClass().getResource("/images/icon_nhanvien_36px.png"));
         
+        
+        
         // menu Nhan Vien 
         ImageIcon iconDanhSachNV = new ImageIcon(getClass().getResource("/images/icon_danhsach_24px.png"));
         ImageIcon iconThemNV = new ImageIcon(getClass().getResource("/images/icon_nhanvien_add_24px.png"));
@@ -70,10 +87,30 @@ public class Home extends javax.swing.JFrame {
                 jPanel_noidung.repaint();
                 jPanel_noidung.validate();
             }
-        });
-        MenuItem menuNhanVien_themNV = new MenuItem(iconThemNV,"Thêm Nhân Viên",null);
-        MenuItem menuNhanVien_suaNV = new MenuItem(iconSuaNV,"Sửa Nhân Viên",null);
-        MenuItem menuNhanVien_xoaNV = new MenuItem(iconXoaNV,"Xóa Nhân Viên",null);
+        },false);
+        MenuItem menuNhanVien_themNV = new MenuItem(iconThemNV,"Thêm Nhân Viên",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Form_ChonLoaiNV_ThemNV formthemnv = new Form_ChonLoaiNV_ThemNV();        
+                formthemnv.setVisible(true);
+                formthemnv.pack();
+                formthemnv.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                formthemnv.setResizable(false);
+                formthemnv.setLocationRelativeTo(null);
+            }
+        },false);
+        MenuItem menuNhanVien_suaNV = new MenuItem(iconSuaNV,"Sửa Nhân Viên",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Form_ChonLoaiNV_SuaNV formsuanv = new Form_ChonLoaiNV_SuaNV();        
+                formsuanv.setVisible(true);
+                formsuanv.pack();
+                formsuanv.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                formsuanv.setResizable(false);
+                formsuanv.setLocationRelativeTo(null);
+            }
+        },false);
+        MenuItem menuNhanVien_xoaNV = new MenuItem(iconXoaNV,"Xóa Nhân Viên",null,false);
         
         
         // Menu Khach Hang
@@ -90,10 +127,27 @@ public class Home extends javax.swing.JFrame {
                 jPanel_noidung.repaint();
                 jPanel_noidung.validate();
             }
-        });
-        MenuItem menuKhachHang_themKH = new MenuItem(iconThemKH,"Thêm Khách Hàng",null);
-        MenuItem menuKhachHang_suaKH = new MenuItem(iconSuaKH,"Sửa Khách Hàng",null);
-        MenuItem menuKhachHang_xoaKH = new MenuItem(iconXoaKH,"Xóa Khách Hàng",null);
+        },false);
+        MenuItem menuKhachHang_themKH = new MenuItem(iconThemKH,"Thêm Khách Hàng",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Form_KhachHang formKH = new Form_KhachHang();
+                formKH.showDialogThemKhachHang();
+            }
+        },false);
+        MenuItem menuKhachHang_suaKH = new MenuItem(iconSuaKH,"Sửa Khách Hàng",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Form_Sua_KhachHang formsuakh = new Form_Sua_KhachHang();
+                formsuakh.setVisible(true);
+                formsuakh.pack();
+                formsuakh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                formsuakh.setResizable(false);
+                formsuakh.setLocationRelativeTo(null);
+                
+            }
+        },false);
+        MenuItem menuKhachHang_xoaKH = new MenuItem(iconXoaKH,"Xóa Khách Hàng",null,false);
         
         // Menu Tim Kiem
         ImageIcon iconTimKiemNV = new ImageIcon(getClass().getResource("/images/icon_timkiem_nhanvien_24px.png"));
@@ -101,10 +155,18 @@ public class Home extends javax.swing.JFrame {
         ImageIcon iconTimKiemHopDong = new ImageIcon(getClass().getResource("/images/icon_timkiem_hopdong_24px.png"));
         ImageIcon iconTimKiemPhieuNhanXet = new ImageIcon(getClass().getResource("/images/icon_timkiem_phieunhanxet_24px.png"));
         
-        MenuItem menuTimKiem_NV = new MenuItem(iconTimKiemNV,"Tìm Nhân Viên",null);
-        MenuItem menuTimKiem_KH = new MenuItem(iconTimKiemKH,"Tìm Khách Hàng",null);
-        MenuItem menuTimKiem_HopDong = new MenuItem(iconTimKiemHopDong,"Tìm Hợp Đồng",null);
-        MenuItem menuTImKien_PhieuNhanXet = new MenuItem(iconTimKiemPhieuNhanXet,"Tìm Phiếu Nhận Xét",null);
+        MenuItem menuTimKiem_NV = new MenuItem(iconTimKiemNV,"Tìm Nhân Viên",null,false);
+        MenuItem menuTimKiem_KH = new MenuItem(iconTimKiemKH,"Tìm Khách Hàng",null,false);
+        MenuItem menuTimKiem_HopDong = new MenuItem(iconTimKiemHopDong,"Tìm Hợp Đồng",null,false);
+        MenuItem menuTImKien_PhieuNhanXet = new MenuItem(iconTimKiemPhieuNhanXet,"Tìm Phiếu Nhận Xét",null,false);
+        
+        // Menu Nha Cung cap
+        
+        ImageIcon iconNCC = new ImageIcon(getClass().getResource("/images/icon_nhacungcap_36px.png"));
+        ImageIcon iconDanhSachNCC = new ImageIcon(getClass().getResource("/images/icon_danhsach_24px.png"));
+        
+         MenuItem menuNCC_danhsachNCC = new MenuItem(iconDanhSachNCC,"Danh Sách Nhà Cung Cấp",null,false);
+        MenuItem menuNCC = new MenuItem(iconNCC,"Nhà Cung Cấp", null,false, menuNCC_danhsachNCC);
         
         // Menu Hop Dong
         ImageIcon iconDanhSachHopDong = new ImageIcon(getClass().getResource("/images/icon_danhsach_24px.png"));
@@ -120,10 +182,30 @@ public class Home extends javax.swing.JFrame {
                 jPanel_noidung.repaint();
                 jPanel_noidung.validate();
             }
-        });
-        MenuItem menuHopDong_taoHD = new MenuItem(icontaoHopDong,"Tạo Hợp Đồng",null);
-        MenuItem menuHopDong_suaHD = new MenuItem(iconsuaHopDong,"Sửa Hợp Đồng",null);
-        MenuItem menuHopDong_hoadon = new MenuItem(iconHoaDon,"Xuất Hóa Đơn",null);
+        },false);
+        MenuItem menuHopDong_taoHD = new MenuItem(icontaoHopDong,"Tạo Hợp Đồng",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Form_Tao_HopDong formtaohd = new Form_Tao_HopDong();
+                formtaohd.setVisible(true);
+                formtaohd.pack();
+                formtaohd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                formtaohd.setResizable(false);
+                formtaohd.setLocationRelativeTo(null);
+            }
+        },false);
+        MenuItem menuHopDong_suaHD = new MenuItem(iconsuaHopDong,"Sửa Hợp Đồng",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Form_Sua_HopDong formsuahd = new Form_Sua_HopDong();
+                formsuahd.setVisible(true);
+                formsuahd.pack();
+                formsuahd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                formsuahd.setResizable(false);
+                formsuahd.setLocationRelativeTo(null);
+            }
+        },false);
+        MenuItem menuHopDong_hoadon = new MenuItem(iconHoaDon,"Xuất Hóa Đơn",null,false);
         
         
         // Menu Phieu Nhan Xet
@@ -131,8 +213,28 @@ public class Home extends javax.swing.JFrame {
         ImageIcon iconPhieuNhanXet_Sua = new ImageIcon(getClass().getResource("/images/icon_phieunhanxet_sua_24px.png"));
         ImageIcon iconDanhSachPhieuNhanXet = new ImageIcon(getClass().getResource("/images/icon_danhsach_24px.png"));
         
-        MenuItem menuPhieuNhanXet_Them = new MenuItem(iconPhieuNhanXet_Them,"Tạo Phiếu Nhận Xét",null);
-        MenuItem menuPhieuNhanXet_Sua = new MenuItem(iconPhieuNhanXet_Sua,"Sửa Phiếu Nhận Xét",null);
+        MenuItem menuPhieuNhanXet_Them = new MenuItem(iconPhieuNhanXet_Them,"Tạo Phiếu Nhận Xét",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Form_Tao_PNX formtaopnx = new Form_Tao_PNX();
+                formtaopnx.setVisible(true);
+                formtaopnx.pack();
+                formtaopnx.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                formtaopnx.setResizable(false);
+                formtaopnx.setLocationRelativeTo(null);
+            }
+        },false);
+        MenuItem menuPhieuNhanXet_Sua = new MenuItem(iconPhieuNhanXet_Sua,"Sửa Phiếu Nhận Xét",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Form_Sua_PNX formsuapnx = new Form_Sua_PNX();
+                formsuapnx.setVisible(true);
+                formsuapnx.pack();
+                formsuapnx.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                formsuapnx.setResizable(false);
+                formsuapnx.setLocationRelativeTo(null);
+            }
+        },false);
         MenuItem menuPhieuNhanXet_danhsach = new MenuItem(iconDanhSachPhieuNhanXet,"Danh Sách Phiếu Nhận Xét",new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -141,30 +243,80 @@ public class Home extends javax.swing.JFrame {
                jPanel_noidung.repaint();
                jPanel_noidung.validate();
             }
-        });
+        },false);
         
         // Menu Thong Ke
         ImageIcon iconThongKe = new ImageIcon(getClass().getResource("/images/icon_thongke_36px.png"));
-        ImageIcon iconThongKe_Nam = new ImageIcon(getClass().getResource("/images/icon_thongke_nam_24px.png"));
-        ImageIcon iconThongKe_Quy = new ImageIcon(getClass().getResource("/images/icon_thongke_quy_24px.png"));
+        ImageIcon iconThongKe_xeban = new ImageIcon(getClass().getResource("/images/icon_thongke_nam_24px.png"));
+        ImageIcon iconThongKe_tonkho = new ImageIcon(getClass().getResource("/images/icon_thongke_quy_24px.png"));
         
-        MenuItem menuThongKe_nam = new MenuItem(iconThongKe_Nam,"Thống kê theo năm",null);
-        MenuItem menuThongKe_quy = new MenuItem(iconThongKe_Quy,"Thống kê theo quý",null);
+        MenuItem menuThongKe_xeban = new MenuItem(iconThongKe_xeban,"Thống kê xe bán",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+               jPanel_noidung.removeAll();
+               jPanel_noidung.add(new Form_ThongKe_XeBan());
+               jPanel_noidung.repaint();
+               jPanel_noidung.validate();
+            }
+        },false);
+        MenuItem menuThongKe_tonkho = new MenuItem(iconThongKe_tonkho,"Thống kê xe tồn kho",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+               jPanel_noidung.removeAll();
+               jPanel_noidung.add(new Form_ThongKe_TonKho());
+               jPanel_noidung.repaint();
+               jPanel_noidung.validate();
+            }
+        },false);
+        
+        
+        // Menu Xe
+        ImageIcon iconXe = new ImageIcon(getClass().getResource("/images/icon_xemoto_36px.png"));
+        ImageIcon iconXe_themXe = new ImageIcon(getClass().getResource("/images/icon_xe_add_24px.png")); 
+        ImageIcon iconXe_suaXe = new ImageIcon(getClass().getResource("/images/icon_sua_xe_24px.png"));
+        ImageIcon iconDanhSachXe = new ImageIcon(getClass().getResource("/images/icon_danhsach_24px.png"));
+        
+        
+        MenuItem menuThemXe = new MenuItem(iconXe_themXe,"Thêm Thông Tin Xe",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                Form_Them_Xe formthemxe = new Form_Them_Xe();
+                formthemxe.setVisible(true);
+                formthemxe.pack();
+                formthemxe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                formthemxe.setResizable(false);
+                formthemxe.setLocationRelativeTo(null);
+            }
+        },false);
+        MenuItem menuDanhSachXe = new MenuItem(iconDanhSachXe,"Danh Sách Xe",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+               jPanel_noidung.removeAll();
+               jPanel_noidung.add(new Form_Xe());
+               jPanel_noidung.repaint();
+               jPanel_noidung.validate();
+            }
+        },false);
         
                 
         MenuItem menuHome = new MenuItem(iconHome,"Home",new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                jPanel_noidung.removeAll();
+                jPanel_noidung.removeAll();      
+                jPanel_noidung.add(new Mainhome());
+                jPanel_noidung.repaint();
+                jPanel_noidung.revalidate();
             }
-        });
-        MenuItem menuNhanVien = new MenuItem(iconNhanVien,"Nhân viên",null,menuNhanVien_danhsachNV,menuNhanVien_themNV,menuNhanVien_suaNV,menuNhanVien_xoaNV);
-        MenuItem menuHopDong = new MenuItem(iconHopDong,"Hợp Đồng",null,menuHopDong_danhsach,menuHopDong_suaHD,menuHopDong_hoadon);
-        MenuItem menuKhachHang = new MenuItem(iconKhachHang,"Khách Hàng",null,menuKhachHang_danhsachKH,menuKhachHang_themKH,menuHopDong_taoHD,menuKhachHang_suaKH,menuKhachHang_xoaKH);
-        MenuItem menuPhieuNhanXet = new MenuItem(iconPhieuNhanXet,"Phiếu Nhận Xét",null,menuPhieuNhanXet_danhsach,menuPhieuNhanXet_Them,menuPhieuNhanXet_Sua);
-        MenuItem menuTimKiem = new MenuItem(iconTimKiem,"Tìm Kiếm",null,menuTimKiem_NV,menuTimKiem_KH,menuTimKiem_HopDong,menuTImKien_PhieuNhanXet);
-        MenuItem menuThongKe = new MenuItem(iconThongKe,"Thống Kê",null,menuThongKe_nam,menuThongKe_quy);
-        addMenu(menuHome,menuNhanVien,menuKhachHang,menuHopDong,menuPhieuNhanXet,menuTimKiem,menuThongKe);
+        },false);
+        
+        MenuItem menuXe = new MenuItem(iconXe,"Xe",null,false,menuDanhSachXe,menuThemXe);
+        MenuItem menuNhanVien = new MenuItem(iconNhanVien,"Nhân viên",null,false,menuNhanVien_danhsachNV,menuNhanVien_themNV);
+        MenuItem menuHopDong = new MenuItem(iconHopDong,"Hợp Đồng",null,false,menuHopDong_danhsach,menuHopDong_hoadon);
+        MenuItem menuKhachHang = new MenuItem(iconKhachHang,"Khách Hàng",null,false,menuKhachHang_danhsachKH,menuKhachHang_themKH,menuHopDong_taoHD);
+        MenuItem menuPhieuNhanXet = new MenuItem(iconPhieuNhanXet,"Phiếu Nhận Xét",null,false,menuPhieuNhanXet_danhsach,menuPhieuNhanXet_Them);
+        MenuItem menuTimKiem = new MenuItem(iconTimKiem,"Tìm Kiếm",null,false,menuTimKiem_NV,menuTimKiem_KH,menuTimKiem_HopDong,menuTImKien_PhieuNhanXet);
+        MenuItem menuThongKe = new MenuItem(iconThongKe,"Thống Kê",null,false,menuThongKe_xeban,menuThongKe_tonkho);
+        addMenu(menuHome,menuXe,menuNCC,menuNhanVien,menuKhachHang,menuHopDong,menuPhieuNhanXet,menuTimKiem,menuThongKe);
     }
     
     private void addMenu(MenuItem... menu){
@@ -179,6 +331,16 @@ public class Home extends javax.swing.JFrame {
        jPanel_Menus.revalidate();
     }
 
+    
+    
+    
+    private void showDefaultMenu() {
+        jPanel_noidung.add(new Mainhome());
+        jPanel_noidung.repaint();
+        jPanel_noidung.revalidate();
+        jPanel_noidung.setBackground(Color.LIGHT_GRAY);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -230,6 +392,7 @@ public class Home extends javax.swing.JFrame {
 
         jScrollPane1.setBorder(null);
 
+        jPanel_Menus.setBackground(new java.awt.Color(153, 255, 255));
         jPanel_Menus.setLayout(new javax.swing.BoxLayout(jPanel_Menus, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(jPanel_Menus);
 
@@ -254,7 +417,7 @@ public class Home extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel_noidung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

@@ -5,10 +5,12 @@
  */
 package gui.menuItem;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -22,13 +24,17 @@ public class MenuItem extends javax.swing.JPanel {
     
     private final ArrayList<MenuItem> subMenu = new ArrayList<>();
     private ActionListener act ;
-    public MenuItem(Icon icon, String menuName,ActionListener act, MenuItem... subMenu) {
+    public MenuItem(Icon icon, String menuName,ActionListener act,boolean isParentMenu, MenuItem... subMenu) {
         initComponents();
         
         jLabel_icon.setIcon(icon);
         jLabel_danhmuc.setText(menuName);
         if(act != null){
             this.act=act;
+        }
+        
+        if(isParentMenu){
+             this.setBackground(new Color(1, 50, 67));
         }
         this.setSize(new Dimension(Integer.MAX_VALUE,45));
         this.setMaximumSize(new Dimension(Integer.MAX_VALUE,45));
@@ -53,12 +59,16 @@ public class MenuItem extends javax.swing.JPanel {
         jLabel_icon = new javax.swing.JLabel();
         jLabel_danhmuc = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(51, 102, 255));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
             }
         });
 
+        jLabel_icon.setBackground(new java.awt.Color(153, 255, 255));
+
+        jLabel_danhmuc.setBackground(new java.awt.Color(153, 255, 255));
         jLabel_danhmuc.setText("Danh mục");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -108,6 +118,9 @@ private boolean showing = false;
                     subMenu.get(i).setVisible(true);
                     sleep();
                 }
+                showing = true;
+                getParent().repaint();
+                getParent().revalidate();
             }
         }).start();
     }
@@ -120,6 +133,9 @@ private boolean showing = false;
                     subMenu.get(i).setVisible(false);
                     sleep();
                 }
+                showing = false;
+                getParent().repaint();
+                getParent().revalidate();
             }
         }).start();
     }

@@ -5,19 +5,34 @@
  */
 package form;
 
+
+import dao.KhachHangDAO;
+import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.List;
+import java.util.Vector;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import obj.KhachHang;
 
 /**
  *
  * @author phamq
  */
 public class Form_KhachHang extends javax.swing.JPanel {
-
+     KhachHangDAO khdao=new KhachHangDAO();
+     public static  ArrayList<KhachHang> listKH;
+    DefaultTableModel model;
+    KhachHang khachhang;
     /**
      * Creates new form Form_KhachHang
      */
     public Form_KhachHang() {
         initComponents();
+        
+       // list=(ArrayList<KhachHang>) new KhachHangDAO().getListKh();     
+        showlistKH();
     }
 
     /**
@@ -29,6 +44,32 @@ public class Form_KhachHang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog_Them_KhachHang = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField_Dialog_hoten_Themkh = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField_Dialog_diachi_Themkh = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField_sdt_Themkh = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField_Dialog_cmnd_Themkh = new javax.swing.JTextField();
+        jButton_Dialog_themKH_luu = new javax.swing.JButton();
+        jButton_Dialog_themKH_huy = new javax.swing.JButton();
+        jDialog_Sua_KhachHang = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField_Dialog_hoten_Suakh = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField_Dialog_diachi_Suakh = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField_Dialog_sdt_Suakh = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField_Dialog_cmnd_Suakh = new javax.swing.JTextField();
+        jButton_Dialog_SuaKH_luu = new javax.swing.JButton();
+        jButton_Dialog_SuaKH_huy = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField_tim_khachhang = new javax.swing.JTextField();
@@ -38,18 +79,238 @@ public class Form_KhachHang extends javax.swing.JPanel {
         jButton_them_khachhang = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_dskhachhang = new javax.swing.JTable();
+        jButton_taoHD = new javax.swing.JButton();
+
+        jPanel2.setMinimumSize(new java.awt.Dimension(347, 244));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Thêm Khách Hàng");
+
+        jLabel3.setText("Họ và Tên :");
+
+        jLabel4.setText("Địa chỉ :");
+
+        jLabel5.setText("Số điện thoại :");
+
+        jLabel6.setText("CMND :");
+
+        jButton_Dialog_themKH_luu.setText("Lưu");
+        jButton_Dialog_themKH_luu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_Dialog_themKH_luuActionPerformed(evt);
+            }
+        });
+
+        jButton_Dialog_themKH_huy.setText("Huỷ");
+        jButton_Dialog_themKH_huy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_Dialog_themKH_huyMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_Dialog_hoten_Themkh, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(jTextField_Dialog_diachi_Themkh)
+                            .addComponent(jTextField_sdt_Themkh)
+                            .addComponent(jTextField_Dialog_cmnd_Themkh)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jButton_Dialog_themKH_luu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(jButton_Dialog_themKH_huy, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(57, 57, 57))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Dialog_hoten_Themkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Dialog_diachi_Themkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Dialog_cmnd_Themkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_sdt_Themkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_Dialog_themKH_luu)
+                    .addComponent(jButton_Dialog_themKH_huy))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialog_Them_KhachHangLayout = new javax.swing.GroupLayout(jDialog_Them_KhachHang.getContentPane());
+        jDialog_Them_KhachHang.getContentPane().setLayout(jDialog_Them_KhachHangLayout);
+        jDialog_Them_KhachHangLayout.setHorizontalGroup(
+            jDialog_Them_KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
+            .addGroup(jDialog_Them_KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jDialog_Them_KhachHangLayout.setVerticalGroup(
+            jDialog_Them_KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 244, Short.MAX_VALUE)
+            .addGroup(jDialog_Them_KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDialog_Them_KhachHangLayout.createSequentialGroup()
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jPanel3.setMinimumSize(new java.awt.Dimension(347, 244));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setText("Sửa Khách Hàng");
+
+        jLabel8.setText("Họ và Tên :");
+
+        jLabel9.setText("Địa chỉ :");
+
+        jLabel10.setText("Số điện thoại :");
+
+        jLabel11.setText("CMND :");
+
+        jButton_Dialog_SuaKH_luu.setText("Lưu");
+        jButton_Dialog_SuaKH_luu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_Dialog_SuaKH_luuActionPerformed(evt);
+            }
+        });
+
+        jButton_Dialog_SuaKH_huy.setText("Huỷ");
+        jButton_Dialog_SuaKH_huy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_Dialog_SuaKH_huyMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(jButton_Dialog_SuaKH_luu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(jButton_Dialog_SuaKH_huy, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_Dialog_hoten_Suakh, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(jTextField_Dialog_diachi_Suakh)
+                            .addComponent(jTextField_Dialog_sdt_Suakh)
+                            .addComponent(jTextField_Dialog_cmnd_Suakh)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel7)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Dialog_hoten_Suakh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Dialog_diachi_Suakh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Dialog_cmnd_Suakh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Dialog_sdt_Suakh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_Dialog_SuaKH_luu)
+                    .addComponent(jButton_Dialog_SuaKH_huy))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialog_Sua_KhachHangLayout = new javax.swing.GroupLayout(jDialog_Sua_KhachHang.getContentPane());
+        jDialog_Sua_KhachHang.getContentPane().setLayout(jDialog_Sua_KhachHangLayout);
+        jDialog_Sua_KhachHangLayout.setHorizontalGroup(
+            jDialog_Sua_KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jDialog_Sua_KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jDialog_Sua_KhachHangLayout.setVerticalGroup(
+            jDialog_Sua_KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 244, Short.MAX_VALUE)
+            .addGroup(jDialog_Sua_KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDialog_Sua_KhachHangLayout.createSequentialGroup()
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Danh Sách Khách Hàng");
 
         jButton_tim_khachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_search_24px.png"))); // NOI18N
         jButton_tim_khachhang.setText("Tìm Kiếm");
+        jButton_tim_khachhang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_tim_khachhangMouseClicked(evt);
+            }
+        });
 
         jButton_xoa_khachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_delete_sign_24px_1.png"))); // NOI18N
         jButton_xoa_khachhang.setText("Xoá Khách Hàng");
+        jButton_xoa_khachhang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_xoa_khachhangActionPerformed(evt);
+            }
+        });
 
         jButton_sua_khachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_edit_calendar_24px.png"))); // NOI18N
         jButton_sua_khachhang.setText("Sửa Khách Hàng");
+        jButton_sua_khachhang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_sua_khachhangMouseClicked(evt);
+            }
+        });
 
         jButton_them_khachhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_add_24px.png"))); // NOI18N
         jButton_them_khachhang.setText("Thêm Khách Hàng");
@@ -97,6 +358,14 @@ public class Form_KhachHang extends javax.swing.JPanel {
         jTable_dskhachhang.setShowGrid(true);
         jScrollPane1.setViewportView(jTable_dskhachhang);
 
+        jButton_taoHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_hopdong_add_24px.png"))); // NOI18N
+        jButton_taoHD.setText("Tạo Hợp Đồng");
+        jButton_taoHD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_taoHDMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,6 +381,8 @@ public class Form_KhachHang extends javax.swing.JPanel {
                         .addComponent(jButton_tim_khachhang))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_taoHD)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_them_khachhang)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_sua_khachhang)
@@ -132,7 +403,9 @@ public class Form_KhachHang extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton_xoa_khachhang)
                     .addComponent(jButton_sua_khachhang)
-                    .addComponent(jButton_them_khachhang))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton_them_khachhang)
+                        .addComponent(jButton_taoHD)))
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(39, Short.MAX_VALUE))
@@ -155,24 +428,217 @@ public class Form_KhachHang extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_them_khachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_them_khachhangMouseClicked
-        Form_Them_KhachHang formthemkh = new Form_Them_KhachHang();
-        formthemkh.setVisible(true);
-        formthemkh.pack();
-        formthemkh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        formthemkh.setResizable(false);
-        formthemkh.setLocationRelativeTo(null);
+        showDialogThemKhachHang();
     }//GEN-LAST:event_jButton_them_khachhangMouseClicked
 
+    public void showDialogThemKhachHang (){
+        jDialog_Them_KhachHang.setVisible(true);
+        jDialog_Them_KhachHang.pack();
+        jDialog_Them_KhachHang.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jDialog_Them_KhachHang.setResizable(false);
+        jDialog_Them_KhachHang.setLocationRelativeTo(null);
+    }
+    
+    private void jButton_sua_khachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_sua_khachhangMouseClicked
+      int r = jTable_dskhachhang.getSelectedRow();
+        if (r == -1) {
+            JOptionPane.showMessageDialog(null, "Bạn Phải Chọn Khách Hàng Cần Cập Nhật");
+        } else {
+           
+            String makh = jTable_dskhachhang.getValueAt(r, 0).toString();
+            khachhang = khdao.findKhachHangById(Integer.parseInt(makh));
+            jTextField_Dialog_hoten_Suakh.setText(khachhang.getHoTen());
+            jTextField_Dialog_diachi_Suakh.setText(khachhang.getDiaChi());
+            jTextField_Dialog_cmnd_Suakh.setText(khachhang.getCmnd());
+            jTextField_Dialog_sdt_Suakh.setText(khachhang.getSdt());
+            jDialog_Sua_KhachHang.setVisible(true);
+            jDialog_Sua_KhachHang.pack();
+            jDialog_Sua_KhachHang.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            jDialog_Sua_KhachHang.setResizable(false);
+            jDialog_Sua_KhachHang.setLocationRelativeTo(null);
 
+        }
+    }//GEN-LAST:event_jButton_sua_khachhangMouseClicked
+
+    private void jButton_taoHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_taoHDMouseClicked
+        // TODO add your handling code here:
+        Form_Tao_HopDong formtaohd = new Form_Tao_HopDong();
+        formtaohd.setVisible(true);
+        formtaohd.pack();
+        formtaohd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        formtaohd.setResizable(false);
+        formtaohd.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton_taoHDMouseClicked
+
+    private void jButton_xoa_khachhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_xoa_khachhangActionPerformed
+        // TODO add your handling code here:
+        try {
+            int r = this.jTable_dskhachhang.getSelectedRow();
+            if (r == -1) {
+                JOptionPane.showMessageDialog(null, "Bạn Phải Chọn Khách Hàng Cần Xóa");
+            } else {
+                int result = JOptionPane.showConfirmDialog(null, "Bạn Có Muốn Xóa", "Xóa Khách Hàng", JOptionPane.YES_NO_OPTION);
+
+                if (result == JOptionPane.YES_OPTION) {
+
+                    String khachhang = this.jTable_dskhachhang.getValueAt(r, 0).toString();
+                    if (khdao.delete(Integer.parseInt(khachhang))) {
+                        JOptionPane.showMessageDialog(null, "Xóa Khách Hàng Thành Công!!");
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Lỗi");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            
+        }
+        showlistKH();
+    }//GEN-LAST:event_jButton_xoa_khachhangActionPerformed
+
+    private void jButton_Dialog_themKH_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Dialog_themKH_luuActionPerformed
+        // TODO add your handling code here:
+        String hoTen = jTextField_Dialog_hoten_Themkh.getText();
+        String diaChi=jTextField_Dialog_diachi_Themkh.getText();
+        String cmnd=jTextField_Dialog_cmnd_Themkh.getText();
+        String sdt = jTextField_sdt_Themkh.getText();
+        if(Validator.validatePhone(jTextField_sdt_Themkh)){
+            KhachHang khachHang = new KhachHang();
+            khachHang.setHoTen(hoTen);
+            khachHang.setDiaChi(diaChi);
+            khachHang.setCmnd(cmnd);
+            khachHang.setSdt(sdt);
+            KhachHangDAO khdao=new KhachHangDAO();
+            khdao.themKH(khachHang);
+            showlistKH();
+            jDialog_Them_KhachHang.setVisible(false);
+        }
+        
+    }//GEN-LAST:event_jButton_Dialog_themKH_luuActionPerformed
+
+    private void jButton_Dialog_themKH_huyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_Dialog_themKH_huyMouseClicked
+        // TODO add your handling code here:
+        jDialog_Them_KhachHang.setVisible(false);
+    }//GEN-LAST:event_jButton_Dialog_themKH_huyMouseClicked
+
+    private void jButton_Dialog_SuaKH_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Dialog_SuaKH_luuActionPerformed
+        // TODO add your handling code here:
+        String hoTenSua = jTextField_Dialog_hoten_Suakh.getText();
+        String diaChiSua = jTextField_Dialog_diachi_Suakh.getText();
+        String cmndSua = jTextField_Dialog_cmnd_Suakh.getText();
+        String sdtSua = jTextField_Dialog_sdt_Suakh.getText();
+        khachhang.setHoTen(hoTenSua);
+        khachhang.setDiaChi(diaChiSua);
+        khachhang.setCmnd(cmndSua);
+        khachhang.setSdt(sdtSua);
+        khdao.updates(khachhang);
+        jDialog_Sua_KhachHang.dispose();
+        showlistKH();
+    }//GEN-LAST:event_jButton_Dialog_SuaKH_luuActionPerformed
+
+    private void jButton_Dialog_SuaKH_huyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_Dialog_SuaKH_huyMouseClicked
+        // TODO add your handling code here:
+        jDialog_Sua_KhachHang.setVisible(false);
+    }//GEN-LAST:event_jButton_Dialog_SuaKH_huyMouseClicked
+
+    private void jButton_tim_khachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_tim_khachhangMouseClicked
+        // TODO add your handling code here:
+         String phone = jTextField_tim_khachhang.getText();
+        if (Validator.validatePhone(jTextField_tim_khachhang)) {
+            List<KhachHang> listtim = khdao.searchKHByPhone(phone);
+            showlisttimKH(listtim);
+        } 
+    }//GEN-LAST:event_jButton_tim_khachhangMouseClicked
+                                                   
+    private void showlisttimKH(List<KhachHang> list) {
+        Vector vData = new Vector();
+        Vector vColumn = new Vector();
+        vColumn.removeAllElements();
+        vColumn.add("Mã Khách Hàng");
+        vColumn.add("Họ Tên");
+        vColumn.add("Địa Chỉ");
+        vColumn.add("CMND");
+        vColumn.add("SDT");
+        for (int i = 0; i < list.size(); i++) {
+            Vector vRow = new Vector();
+            KhachHang kh = list.get(i);
+            vRow.add(kh.getMaKH());
+            vRow.add(kh.getHoTen());
+            vRow.add(kh.getDiaChi());
+            vRow.add(kh.getCmnd());
+            vRow.add(kh.getSdt());
+            vData.add(vRow);
+        }
+        DefaultTableModel model = new DefaultTableModel(vData, vColumn);
+        jTable_dskhachhang.setModel(model);
+
+    }
+        
+    
+
+        private void showlistKH() {
+        Vector vData = new Vector();
+        Vector vColumn = new Vector();
+        listKH=khdao.getListKh();
+        vColumn.removeAllElements();
+        vColumn.add("Mã Khách Hàng");
+        vColumn.add("Họ Tên");
+        vColumn.add("Địa Chỉ");
+        vColumn.add("CMND");
+        vColumn.add("SDT");
+         for (int i = 0; i < listKH.size(); i++) {
+            Vector vRow = new Vector();
+            KhachHang kh =  listKH.get(i);
+            vRow.add(kh.getMaKH());
+            vRow.add(kh.getHoTen());
+            vRow.add(kh.getDiaChi());
+            vRow.add(kh.getCmnd());
+            vRow.add(kh.getSdt());
+            vData.add(vRow);
+        }
+        DefaultTableModel model = new DefaultTableModel(vData, vColumn);
+        jTable_dskhachhang.setModel(model);
+     
+        
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_Dialog_SuaKH_huy;
+    private javax.swing.JButton jButton_Dialog_SuaKH_luu;
+    private javax.swing.JButton jButton_Dialog_themKH_huy;
+    private javax.swing.JButton jButton_Dialog_themKH_luu;
     private javax.swing.JButton jButton_sua_khachhang;
+    private javax.swing.JButton jButton_taoHD;
     private javax.swing.JButton jButton_them_khachhang;
     private javax.swing.JButton jButton_tim_khachhang;
     private javax.swing.JButton jButton_xoa_khachhang;
+    private javax.swing.JDialog jDialog_Sua_KhachHang;
+    private javax.swing.JDialog jDialog_Them_KhachHang;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_dskhachhang;
+    private javax.swing.JTextField jTextField_Dialog_cmnd_Suakh;
+    private javax.swing.JTextField jTextField_Dialog_cmnd_Themkh;
+    private javax.swing.JTextField jTextField_Dialog_diachi_Suakh;
+    private javax.swing.JTextField jTextField_Dialog_diachi_Themkh;
+    private javax.swing.JTextField jTextField_Dialog_hoten_Suakh;
+    private javax.swing.JTextField jTextField_Dialog_hoten_Themkh;
+    private javax.swing.JTextField jTextField_Dialog_sdt_Suakh;
+    private javax.swing.JTextField jTextField_sdt_Themkh;
     private javax.swing.JTextField jTextField_tim_khachhang;
     // End of variables declaration//GEN-END:variables
 }
