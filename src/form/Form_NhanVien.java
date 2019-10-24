@@ -37,11 +37,11 @@ public class Form_NhanVien extends javax.swing.JPanel {
     public Form_NhanVien() {
         initComponents();
         
-         listnv=nvdao.getListNV() ;
+         
         
         
-        listnvhc=nvdao.getListNVHC();
-        listnvkt=nvdao.getListNVKT();
+        
+        
         showlistNV();
 
         setComBoModel();
@@ -597,7 +597,7 @@ public class Form_NhanVien extends javax.swing.JPanel {
     private void showlistNV() {
         Vector vData = new Vector();
         Vector vColumn = new Vector();
-        listnv = nvdao.getListNV();
+        listnv=nvdao.getListNV() ;
         vColumn.removeAllElements();
         vColumn.add("Mã Nhân Viên");
         vColumn.add("Họ Tên");
@@ -611,13 +611,15 @@ public class Form_NhanVien extends javax.swing.JPanel {
             vRow.add(nv.getHoTen());
             vRow.add(nv.getDiaChi());
             vRow.add(nv.getSdt());
-            vRow.add(nv.getLoaiNV());
+            vRow.add(nv.getLoaiNV().getTenLoai());
             vData.add(vRow);
+            //To change body of generated methods, choose Tools | Templates.
         }
         DefaultTableModel model = new DefaultTableModel(vData, vColumn);
+        
         jTable_dsNV.setModel(model);
     }
-    private void showlistNVHC() {
+     private void showlistNVHC() {
         Vector vData = new Vector();
         Vector vColumn = new Vector();
         listnvhc=nvdao.getListNVHC();
@@ -640,8 +642,10 @@ public class Form_NhanVien extends javax.swing.JPanel {
             vRow.add(nvhc.getChucVu());
             vRow.add(nvhc.getPhongBan());
             vRow.add(nvhc.getTrinhDoHocVan());
-            vRow.add(nvhc.getLoaiNV());
+            //vRow.add(nvhc.getLoaiNV());
+            vRow.add(nvhc.getLoaiNV().getTenLoai());
             vData.add(vRow);
+            //To change body of generated methods, choose Tools | Templates.
         }
         DefaultTableModel model = new DefaultTableModel(vData, vColumn);
         jTable_dsNV.setModel(model);
@@ -649,7 +653,7 @@ public class Form_NhanVien extends javax.swing.JPanel {
     private void showlistNVKT() {
         Vector vData = new Vector();
         Vector vColumn = new Vector();
-        listnvkt = nvdao.getListNVKT();
+        listnvkt=nvdao.getListNVKT();
         vColumn.removeAllElements();
         vColumn.add("Mã Nhân Viên");
         vColumn.add("Họ Tên");
@@ -667,8 +671,11 @@ public class Form_NhanVien extends javax.swing.JPanel {
             vRow.add(nvkt.getSdt());
             vRow.add(nvkt.getBacTho());
             vRow.add(nvkt.getNamKinhNghiem());
-            vRow.add(nvkt.getLoaiNV());
-            vData.add(vRow); 
+            vRow.add(nvkt.getLoaiNV().getTenLoai());
+           
+           // vRow.add(nvkt.getLoaiNV());
+            vData.add(vRow);
+            //To change body of generated methods, choose Tools | Templates.
         }
         DefaultTableModel model = new DefaultTableModel(vData, vColumn);
         jTable_dsNV.setModel(model);
@@ -724,16 +731,7 @@ public class Form_NhanVien extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void setComBoModel() {
-        
-     
-//        Vector dataNhanVien = new Vector();
-//        dataNhanVien.add("Tất cả Nhân Viên");
-//        dataNhanVien.add("Nhân Viên Hành Chánh");
-//        dataNhanVien.add("Nhân Viên Kỹ Thuật");
-//
-//        DefaultComboBoxModel modelNhanVien = new DefaultComboBoxModel(dataNhanVien);
-//        jComboBox_LoaiNV.setModel(modelNhanVien);
-        
+              
         LoaiNhanVienDAO tenLoaiXeDAO = new LoaiNhanVienDAO();
         ArrayList<LoaiNV> listTenLoaiNV = tenLoaiXeDAO.getListLoaiNV();
         Vector<String> dataTenLoaiNV = new Vector();

@@ -5,9 +5,11 @@
         <group>
             <file>file:/F:/New%20Folder/JavaApplication3/src/obj/Xe.java</file>
             <file>file:/F:/New%20Folder/JavaApplication3/src/form/Form_NhaCungCap.java</file>
+            <file>file:/F:/New%20Folder/JavaApplication3/src/dao/LoaiNhanVienDAO.java</file>
             <file>file:/F:/New%20Folder/JavaApplication3/src/form/Form_KhachHang.java</file>
             <file>file:/F:/New%20Folder/JavaApplication3/src/obj/MauXe.java</file>
             <file>file:/F:/New%20Folder/JavaApplication3/src/dao/KhachHangDAO.java</file>
+            <file>file:/F:/New%20Folder/JavaApplication3/src/dao/LoaiXeDAO.java</file>
             <file>file:/F:/New%20Folder/JavaApplication3/src/dao/NhaCungCapDAO.java</file>
             <file>file:/F:/New%20Folder/JavaApplication3/src/form/Form_Xe.java</file>
             <file>file:/F:/New%20Folder/JavaApplication3/src/dao/XeDAO.java</file>

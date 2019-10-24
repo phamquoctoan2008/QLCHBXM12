@@ -8,7 +8,11 @@ public class NhanVienKyThuat extends NhanVien{
 		// TODO Auto-generated constructor stub
 	}
 
-        public NhanVienKyThuat(int maNV, String hoTen, String diaChi, String sdt, String LoaiNV) {
+    public NhanVienKyThuat(LoaiNV LoaiNV, int maNV, String hoTen, String diaChi, String sdt, TaiKhoan taiKhoan) {
+        super(LoaiNV, maNV, hoTen, diaChi, sdt, taiKhoan);
+    }
+
+        public NhanVienKyThuat(int maNV, String hoTen, String diaChi, String sdt, LoaiNV LoaiNV) {
             super(maNV, hoTen, diaChi, sdt, LoaiNV);
         }
 	

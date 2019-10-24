@@ -10,8 +10,12 @@ public class NhanVienHanhChinh extends NhanVien {
 		// TODO Auto-generated constructor stub
 	}
 
+    public NhanVienHanhChinh(LoaiNV LoaiNV, int maNV, String hoTen, String diaChi, String sdt, TaiKhoan taiKhoan) {
+        super(LoaiNV, maNV, hoTen, diaChi, sdt, taiKhoan);
+    }
 
-    public NhanVienHanhChinh(int maNV, String hoTen, String diaChi, String sdt, String LoaiNV) {
+
+    public NhanVienHanhChinh(int maNV, String hoTen, String diaChi, String sdt, LoaiNV LoaiNV) {
         super(maNV, hoTen, diaChi, sdt, LoaiNV);
     }
 	
